@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simulador de Credito DVJ</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <header class="hero">
+            <div>
+                <span class="badge">SIMULADOR FINANCIERO</span>
+                <h1>Credito Personal DVJ</h1>
+                <p>
+                    Calcula tu financiamiento de forma rapida,
+                    clara y transparente.
+                </p>
+            </div>
+
+            <div class="hero-icon">$</div>
+        </header>
+
+        <section class="card">
+
+            <div class="section-title">
+                <h2>Datos del credito</h2>
+                <p>Ingresa los parametros para realizar la simulacion.</p>
+            </div>
+
+            <form id="credit-form">
+
+                <div class="input-group">
+                    <label for="monto">Monto solicitado</label>
+
+                    <div class="input-wrapper">
+                        <span>$</span>
+                        <input
+                            type="number"
+                            id="monto"
+                            value="15000"
+                            min="1"
+                            step="1000"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="tasa">Tasa anual ordinaria</label>
+
+                    <div class="input-wrapper">
+                        <input
+                            type="number"
+                            id="tasa"
+                            value="34"
+                            min="0"
+                            step="0.1"
+                            required
+                        >
+                        <span>%</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="plazo">Plazo</label>
+
+                    <select id="plazo">
+                        <option value="12">12 meses</option>
+                        <option value="24">24 meses</option>
+                        <option value="36">36 meses</option>
+                        <option value="48" selected>48 meses</option>
+                        <option value="60">60 meses</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="iva">IVA sobre intereses</label>
+
+                    <div class="input-wrapper disabled">
+                        <input
+                            type="text"
+                            id="iva"
+                            value="16%"
+                            disabled
+                        >
+                    </div>
+                </div>
+
+                <div class="button-group">
+
+                    <button
+                        type="submit"
+                        id="btn-calcular"
+                        class="btn-primary"
+                    >
+                        Calcular credito
+                        <span>→</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btn-limpiar"
+                        class="btn-secondary"
+                    >
+                        Limpiar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <section
+            id="resultado"
+            class="results"
+            aria-live="polite"
+        >
+
+            <div class="result-header">
+                <div>
+                    <span class="badge">RESULTADO</span>
+                    <h2>Resumen del credito</h2>
+                </div>
+
+                <div class="approved">
+                    Simulacion lista
+                </div>
+            </div>
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <span>Monto solicitado</span>
+                    <strong id="res-monto">$0.00</strong>
+                </div>
+
+                <div class="summary-card">
+                    <span>Primer pago</span>
+                    <strong id="res-primer-pago">$0.00</strong>
+                </div>
+
+                <div class="summary-card">
+                    <span>Total intereses</span>
+                    <strong id="res-intereses">$0.00</strong>
+                </div>
+
+                <div class="summary-card highlight">
+                    <span>Total a pagar</span>
+                    <strong id="res-total">$0.00</strong>
+                </div>
+
+            </div>
+
+            <div class="table-container">
+
+                <div class="table-header">
+                    <div>
+                        <h3>Tabla de amortizacion</h3>
+                        <p>
+                            Capital constante e intereses sobre saldo insoluto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="table-scroll">
+
+                    <table id="tabla-amortizacion">
+
+                        <thead>
+                            <tr>
+                                <th>Periodo</th>
+                                <th>Saldo inicial</th>
+                                <th>Capital</th>
+                                <th>Interes</th>
+                                <th>IVA</th>
+                                <th>Pago total</th>
+                                <th>Saldo final</th>
+                            </tr>
+                        </thead>
+
+                        <tbody></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer>
+            <p>Simulador de Credito Personal DVJ</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
